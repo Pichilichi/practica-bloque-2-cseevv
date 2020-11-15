@@ -8,3 +8,15 @@
 // Una vez hayáis añadido todas las instancias al array de usuarios, ejecutad el método "showMeTheMoney" del tercer usuario "Roberto".
 
 const users = [];
+
+class User {
+
+  constructor(name,money,showMeTheMoney){
+    this.name = name;
+    this.money = money;
+    this.showMeTheMoney = showMeTheMoney;
+  }
+
+}
+
+let u = new User();
