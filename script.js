@@ -14,7 +14,7 @@ class User {
     this.name = name;
     this.money = money;
     this.showMeTheMoney = function() {
-      alert(this.name + " tiene " + this.money);
+      showMeTheMoneyFunc(this.name);
     };
   }
 }
@@ -45,10 +45,11 @@ function getUsers() {
 function showMeTheMoneyFunc(name) {
   users.filter(function(b) {
     if (b.name === name) {
-      console.log("Soy " + b.name);
-      name.showMeTheMoney();
+      console.log("Alerta mostrada");
+      alert(b.name + " tiene " + b.money + " euros.");
     }
   });
 }
 
 getUsers();
+User.showMeTheMoney("Roberto");
