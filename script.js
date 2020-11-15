@@ -13,13 +13,15 @@ class User {
   constructor(name, money, showMeTheMoney) {
     this.name = name;
     this.money = money;
-    this.showMeTheMoney = showMeTheMoney;
+    this.showMeTheMoney = function() {
+      alert(this.name + " tiene " + this.money);
+    };
   }
 }
 
 function filterUsers(arrayToFiltr) {
   peopleFiltered = arrayToFiltr.filter(function(e) {
-    let newUser = new User(e.name, e.money);
+    let newUser = new User(e.name, e.money, e.showMeTheMoney);
     users.push(newUser);
   });
 
@@ -36,8 +38,17 @@ function getUsers() {
       //let newUser = new User(users.json.name, users.json.name);
       //users.push(newUser);
       filterUsers(data);
+      showMeTheMoneyFunc("Roberto");
     });
 }
 
-getUsers();
+function showMeTheMoneyFunc(name) {
+  users.filter(function(b) {
+    if (b.name === name) {
+      console.log("Soy " + b.name);
+      name.showMeTheMoney();
+    }
+  });
+}
 
+getUsers();
