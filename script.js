@@ -17,20 +17,27 @@ class User {
   }
 }
 
+function filterUsers(arrayToFiltr) {
+  peopleFiltered = arrayToFiltr.filter(function(e) {
+    let newUser = new User(e.name, e.money);
+    users.push(newUser);
+  });
+
+  console.log(users);
+}
+
 function getUsers() {
   fetch("users.json")
     .then(function(response) {
-      console.log("response =", response);
       return response.json();
     })
     .then(function(data) {
-      console.log("datos =", data);
+      // console.log("datos =", data);
+      //let newUser = new User(users.json.name, users.json.name);
+      //users.push(newUser);
       filterUsers(data);
     });
 }
 
-let u = new User("Paco", 2);
-users.push(u);
-
-console.log(users);
 getUsers();
+
