@@ -10,13 +10,27 @@
 const users = [];
 
 class User {
-
-  constructor(name,money,showMeTheMoney){
+  constructor(name, money, showMeTheMoney) {
     this.name = name;
     this.money = money;
     this.showMeTheMoney = showMeTheMoney;
   }
-
 }
 
-let u = new User();
+function getUsers() {
+  fetch("users.json")
+    .then(function(response) {
+      console.log("response =", response);
+      return response.json();
+    })
+    .then(function(data) {
+      console.log("datos =", data);
+      filterUsers(data);
+    });
+}
+
+let u = new User("Paco", 2);
+users.push(u);
+
+console.log(users);
+getUsers();
